@@ -70,6 +70,9 @@ public class Ring<T> implements Queue<T> {
 
         @Override
         public T next() {
+            if(itemsLeft == 0) {
+                throw new NoSuchElementException("Попытка итерации за пределы очереди");
+            }
             T value = current.value;
             current = current.next;
             --itemsLeft;
